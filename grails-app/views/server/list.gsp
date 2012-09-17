@@ -24,9 +24,14 @@
 				<thead>
 					<tr>
 					
-						<td>Agent Url</td>
-						<td>Password</td>
-						<td>Username</td>
+						<g:sortableColumn property="agentUrl" title="${message(code: 'server.agentUrl.label', default: 'Agent Url')}" />
+					
+						<g:sortableColumn property="password" title="${message(code: 'server.password.label', default: 'Password')}" />
+					
+						<g:sortableColumn property="username" title="${message(code: 'server.username.label', default: 'Username')}" />
+
+                        <g:sortableColumn property="goto" title="Goto" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -39,7 +44,11 @@
 					
 						<td>${fieldValue(bean: serverInstance, field: "username")}</td>
 
-                        <td><g:link action="go" id="${serverInstance.id}">goto</g:link></td>
+                        <td>
+                            <g:link controller="flow" action="list" id="${serverInstance.id}">flows</g:link>
+                            <g:link controller="endpoint" action="list" id="${serverInstance.id}">endpoints</g:link>
+
+                        </td>
 					
 					</tr>
 				</g:each>

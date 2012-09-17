@@ -23,10 +23,10 @@
 			<table>
 				<thead>
 					<tr>
-					
+                        <g:sortableColumn property="componentName" title="${message(code: 'endpoint.componentName.label', default: 'Component Name(Flow)')}" />
 						<g:sortableColumn property="address" title="${message(code: 'endpoint.address.label', default: 'Address')}" />
 					
-						<g:sortableColumn property="componentName" title="${message(code: 'endpoint.componentName.label', default: 'Component Name')}" />
+
 					
 						<g:sortableColumn property="connected" title="${message(code: 'endpoint.connected.label', default: 'Connected')}" />
 					
@@ -41,10 +41,10 @@
 				<g:each in="${endpointInstanceList}" status="i" var="endpointInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td> ${fieldValue(bean: endpointInstance, field: "address")} </td>
+
 					
 						<td>${fieldValue(bean: endpointInstance, field: "componentName")}</td>
-					
+                        <td> ${fieldValue(bean: endpointInstance, field: "address")} </td>
 						<td><g:formatBoolean boolean="${endpointInstance.connected}" /></td>
 					
 						<td><g:formatBoolean boolean="${endpointInstance.inbound}" /></td>

@@ -10,29 +10,29 @@ class EndpointController {
 //    }
 
     def list() {
-        def serverId = params.id
-        try {
-            def rs = endpointService.listEndpoints(serverId)
-            [endpointInstanceList: rs, endpointInstanceTotal: rs?.size()]
-        } catch (e) {
-            e.printStackTrace()
-            flash.message = "Connection refused"
-            [endpointInstanceList: [], endpointInstanceTotal: 0]
+        def serverId   = params.id
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        def rs
+        if (params.flow){
+              rs = endpointService.listEndpointsByFlow(serverId,params.flow)
         }
+        else{
+              rs = endpointService.listEndpoints(serverId)
+        }
+        [endpointInstanceList: rs, endpointInstanceTotal:rs?.size()]
 
     }
 
-    def disconnect() {
+    def disconnect(){
         def objectName = params.objectName
-        endpointService.disconnect(params.id, objectName)
-        flash.message = objectName + " disconnected"
-        redirect(action: "list", id: params.id)
-    }
-
-    def connect() {
-        def objectName = params.objectName
-        endpointService.connect(params.id, objectName)
+        endpointService.disconnect(params.id,objectName)
         flash.message = objectName + " connected"
-        redirect(action: "list", id: params.id)
+        redirect(action: "list",id: params.id)
+    }
+    def connect(){
+        def objectName = params.objectName
+        endpointService.connect(params.id,objectName)
+        flash.message = objectName + " connected"
+        redirect(action: "list",id: params.id)
     }
 }

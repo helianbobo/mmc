@@ -1,6 +1,9 @@
 package mmc
 
 import org.springframework.dao.DataIntegrityViolationException
+import javax.management.remote.JMXConnector
+import javax.management.remote.JMXConnectorFactory
+import javax.management.remote.JMXServiceURL
 
 class ServerController {
 
@@ -21,6 +24,10 @@ class ServerController {
 
     def save() {
         def serverInstance = new Server(params)
+
+
+
+
         if (!serverInstance.save(flush: true)) {
             render(view: "create", model: [serverInstance: serverInstance])
             return
@@ -101,18 +108,7 @@ class ServerController {
         }
     }
 
-    def go(){
-        println params.id
 
-            def serverInstance = Server.get(params.id)
-            if (!serverInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'server.label', default: 'Server'), params.id])
-                redirect(action: "list")
-                return
-            }
-            redirect(controller: "endpoint",action: "list", id: params.id)
-
-    }
 
 
 }

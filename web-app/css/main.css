@@ -40,8 +40,8 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 1200px;
-	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
+	/*max-width: 1200px;*/
+	/*overflow-x: hidden; *//* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
 	        box-shadow: 0 0 0.3em #255b17;
@@ -403,6 +403,9 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
+    font-size:0.5em;
+    /*table-layout: fixed;*/
+
 }
 
 tr {
@@ -422,6 +425,10 @@ td, th {
 	padding: 0.5em 0.6em;
 	text-align: left;
 	vertical-align: top;
+    word-break: break-all;
+    word-wrap:break-word;
+    text-wrap: normal;
+
 }
 
 th {
@@ -434,10 +441,13 @@ th {
 	font-weight: bold;
 	line-height: 1.7em;
 	padding: 0.2em 0.6em;
+
 }
 
 thead th {
 	white-space: nowrap;
+    word-break: break-all;
+    word-wrap:break-word;
 }
 
 th a {
