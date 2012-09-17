@@ -24,15 +24,23 @@ class EndpointController {
     }
 
     def disconnect(){
+        println params
         def objectName = params.objectName
         endpointService.disconnect(params.id,objectName)
         flash.message = objectName + " connected"
-        redirect(action: "list",id: params.id)
+        if (params.flow)
+            redirect(action: "list",id: params.id,  params:[flow:params.flow])
+        else
+            redirect(action: "list",id: params.id)
     }
     def connect(){
+        println params
         def objectName = params.objectName
         endpointService.connect(params.id,objectName)
         flash.message = objectName + " connected"
-        redirect(action: "list",id: params.id)
+        if (params.flow)
+            redirect(action: "list",id: params.id,  params:[flow:params.flow])
+        else
+            redirect(action: "list",id: params.id)
     }
 }

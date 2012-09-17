@@ -54,12 +54,12 @@
 
                             <fieldset class="buttons">
                                 <g:if test="${endpointInstance.connected}">
-                                  <a   href  ="${createLink(  action: "disconnect",  params:[id: params.id,objectName:endpointInstance.objectName])}">disconnect</a>
+                                  <a   href  ="${createLink(  action: "disconnect",  params:[id: params.id,objectName:endpointInstance.objectName,flow:params.flow])}">disconnect</a>
                                 %{--<g:link name="disconnect"   action="disconnect" params="[objectName:${endpointInstance.objectName}]" > disconnect--}%
                                 %{--</g:link>--}%
                                 </g:if>
                                 <g:else>
-                                    <a   href  ="${createLink(  action: "connect",   params:[id: params.id,objectName:endpointInstance.objectName])}">connect</a>
+                                    <a   href  ="${createLink(  action: "connect",   params:[id: params.id,objectName:endpointInstance.objectName,flow:params.flow])}">connect</a>
                                 %{--<g:link name="connect"   action="connect" params="[objectName:${endpointInstance.objectName}]" > connect</g:link>--}%
                                 </g:else>
 
